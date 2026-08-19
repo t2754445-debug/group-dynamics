@@ -31,6 +31,7 @@
 
   --radius: 16px;
   --shadow: 0 1px 2px rgba(17, 30, 45, .05), 0 8px 24px rgba(17, 30, 45, .06);
+  --display: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -89,7 +90,7 @@ body {
   font-size: 12px; letter-spacing: .07em; text-transform: uppercase;
   color: var(--faint); font-weight: 700;
 }
-h1 { font: 800 28px/1.15 var(--sans); margin: 0; letter-spacing: -.02em; }
+h1 { font: 700 29px/1.14 var(--display); margin: 0; letter-spacing: -.02em; }
 .sub { color: var(--muted); font-size: 14.5px; }
 
 .back {
@@ -109,8 +110,8 @@ h1 { font: 800 28px/1.15 var(--sans); margin: 0; letter-spacing: -.02em; }
 .card > :first-child { margin-top: 0; }
 .card > :last-child { margin-bottom: 0; }
 
-h2 { font: 800 21px/1.25 var(--sans); margin: 0 0 10px; letter-spacing: -.015em; }
-h3 { font: 700 16px/1.3 var(--sans); margin: 26px 0 10px; }
+h2 { font: 700 21.5px/1.25 var(--display); margin: 0 0 10px; letter-spacing: -.015em; }
+h3 { font: 600 16.5px/1.3 var(--display); margin: 26px 0 10px; }
 p { margin: 0 0 13px; }
 p:last-child { margin-bottom: 0; }
 .lead { font-size: 17px; line-height: 1.62; }
@@ -124,7 +125,7 @@ strong { font-weight: 700; }
   background: var(--surface-2); border-radius: 13px; padding: 15px 16px;
 }
 .fact .big {
-  font: 800 30px/1 var(--sans); letter-spacing: -.03em; white-space: nowrap;
+  font: 700 30px/1 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 .fact .txt { font-size: 14.5px; line-height: 1.45; }
 .fact .txt b { display: block; font-size: 15.5px; margin-bottom: 2px; }
@@ -146,7 +147,7 @@ strong { font-weight: 700; }
 .hb-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
 .hb-top b { font-size: 15.5px; font-weight: 700; }
 .hb-top span { font-size: 13.5px; color: var(--muted); white-space: nowrap; font-weight: 600; }
-.hb-track { height: 12px; background: var(--surface-3); border-radius: 99px; overflow: hidden; }
+.hb-track { height: 10px; background: var(--surface-3); border-radius: 99px; overflow: hidden; }
 .hb-fill { height: 100%; border-radius: 99px; }
 .hb-note { font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
 
@@ -179,7 +180,7 @@ strong { font-weight: 700; }
 .step-body { display: none; padding: 0 15px 15px; font-size: 14.5px; line-height: 1.55; }
 .step.open .step-body { display: block; }
 .step-body .ex {
-  background: var(--surface); border-radius: 10px; padding: 11px 13px; margin: 9px 0 0;
+  background: var(--surface); border-radius: 9px; padding: 11px 13px; margin: 9px 0 0;
   font-size: 14.5px; line-height: 1.5;
 }
 .step-body .ex b { color: var(--accent); display: block; font-size: 12.5px;
@@ -250,7 +251,7 @@ input[type=range]::-moz-range-thumb {
 
 .outcome { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 16px; }
 .oc { background: var(--surface-2); border-radius: 13px; padding: 14px 8px; text-align: center; }
-.oc .n { font: 800 26px/1 var(--sans); display: block; letter-spacing: -.02em; }
+.oc .n { font: 700 26px/1 var(--display); font-variant-numeric: tabular-nums; display: block; letter-spacing: -.02em; }
 .oc .l { font-size: 12.5px; color: var(--muted); display: block; margin-top: 6px; }
 .oc .d { font-size: 12.5px; font-weight: 700; display: block; margin-top: 4px; }
 .oc.e .n { color: var(--energy); }
@@ -308,3 +309,13 @@ blockquote cite { display: block; margin-top: 7px; font-size: 12.5px; color: var
 .dt-row.dt-head span { font-size: 11.5px; font-weight: 700; color: var(--faint);
   text-transform: uppercase; letter-spacing: .03em; background: var(--surface-2); }
 .dt-row b { color: var(--ink); }
+
+
+/* Уважение к системной настройке «меньше движения» */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Видимый фокус с клавиатуры — нигде не выключен */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
