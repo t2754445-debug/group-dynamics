@@ -1,0 +1,5 @@
+*.json
+*.py
+messages.html
+.playwright-mcp/
+*.png
