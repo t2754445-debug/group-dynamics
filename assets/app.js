@@ -70,13 +70,15 @@
     ['sleep7', 'phys', 'clean_food', 'request'].forEach(function (key) {
       var eff = sim.levers[key];
       if (!eff) return;
-      var score = 0;
-      if (eff.E) score += eff.E.delta;
-      if (eff.S) score += eff.S.delta;
-      if (eff.T) score -= eff.T.delta;
+      // максимальная польза по любой из шкал, а не сумма по трём
+      var cands = [];
+      if (eff.E) cands.push(eff.E.delta);
+      if (eff.S) cands.push(eff.S.delta);
+      if (eff.T) cands.push(-eff.T.delta);
+      var score = cands.length ? Math.max.apply(null, cands) : 0;
       if (best === null || score > best.score) best = { key: key, score: score };
     });
-    if (!best || best.score <= 0.05) {
+    if (!best || best.score <= 0.15) {
       return 'У тебя пока нет рычага с заметным эффектом: разброс между днями меньше, ' +
         'чем нужно, чтобы что-то уверенно выделить. Это тоже результат — значит состояние ' +
         'сейчас определяется не режимом, а чем-то, что в отчёте не фиксируется.';
