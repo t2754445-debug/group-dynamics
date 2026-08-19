@@ -3,4 +3,5 @@
 messages.html
 .playwright-mcp/
 *.png
+!assets/og.png
 og-source.html
