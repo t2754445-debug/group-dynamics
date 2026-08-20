@@ -1,14 +1,2 @@
-# Сайт закрыт от поисковых систем: это личные данные участников группы.
-# Ботам мессенджеров разрешено — иначе не будет превью при отправке ссылки.
-
-User-agent: TelegramBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
 User-agent: *
 Disallow: /
